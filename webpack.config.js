@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 module.exports = {
+  context: path.resolve(__dirname, 'client'),
   entry: {
     index: [path.resolve(__dirname, 'client/index.js')],
     vendor: ['react', 'react-dom', 'prop-types'],
