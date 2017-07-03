@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class CommentForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
+  static defaultProps = {
+    onSubmit: function () {},
+  }
   constructor (props) {
     super(props)
 
@@ -52,13 +58,6 @@ class CommentForm extends Component {
       </form>
     )
   }
-}
-
-CommentForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-}
-CommentForm.defaultProps = {
-  onSubmit: function () {},
 }
 
 export default CommentForm

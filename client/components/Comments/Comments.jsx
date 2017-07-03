@@ -19,14 +19,14 @@ class Comments extends Component {
     document.addEventListener('comment.delete', this.handleCommentDelete)
 
     fetch('/api/comments')
-    .then(res => res.json())
-    .then(json => {
-      if (json.error_code === 0) {
-        this.setState({
-          comments: json.data,
-        })
-      }
-    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.error_code === 0) {
+          this.setState({
+            comments: json.data,
+          })
+        }
+      })
   }
   componentWillUnmount () {
     document.removeEventListener('comment.delete', this.handleCommentDelete)
@@ -42,28 +42,28 @@ class Comments extends Component {
     fetch(`/api/comments/${id}`, {
       method: 'delete',
     })
-    .then(res => res.json())
-    .then(json => {
-      if (json.error_code === 0) {
-        this.setState({
-          comments: this.state.comments.filter(item => item.id !== id),
-        })
-      }
-    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.error_code === 0) {
+          this.setState({
+            comments: this.state.comments.filter(item => item.id !== id),
+          })
+        }
+      })
   }
   handleSubmit (values) {
     fetch('/api/comments', {
       method: 'post',
       body: JSON.stringify(values),
     })
-    .then(res => res.json())
-    .then(json => {
-      if (json.error_code === 0) {
-        this.setState({
-          comments: json.data,
-        })
-      }
-    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.error_code === 0) {
+          this.setState({
+            comments: json.data,
+          })
+        }
+      })
   }
 
   render () {

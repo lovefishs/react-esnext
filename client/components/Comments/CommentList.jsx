@@ -4,6 +4,16 @@ import PropTypes from 'prop-types'
 import CommentItem from './CommentItem'
 
 class CommentList extends Component {
+  static propTypes = {
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      comment: PropTypes.string.isRequired,
+    })).isRequired,
+  }
+  static defaultProps = {
+    comments: [],
+  }
   constructor (props) {
     super(props)
 
@@ -24,21 +34,14 @@ class CommentList extends Component {
 
     return (
       <ul className="list-group">
-        {comments.map(item => <CommentItem key={item.id} {...item} />)}
+        {comments.map(item => {
+          return (
+            <CommentItem key={item.id} {...item} />
+          )
+        })}
       </ul>
     )
   }
-}
-
-CommentList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    author: PropTypes.string.isRequired,
-    comment: PropTypes.string.isRequired,
-  })).isRequired,
-}
-CommentList.defaultProps = {
-  comments: [],
 }
 
 export default CommentList
